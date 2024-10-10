@@ -163,7 +163,39 @@ If you are interested in code for these demos they are accessable in another rep
 <p align="left">
   <img width="460" height="300" src="Images/Demos/ardemo.gif">
 </p>
-
+black              24.10.0
+certifi            2024.8.30
+charset-normalizer 3.4.0
+click              8.1.7
+configparser       7.1.0
+contourpy          1.3.0
+cycler             0.12.1
+exceptiongroup     1.2.2
+fonttools          4.54.1
+future-fstrings    1.2.0
+idna               3.10
+iniconfig          2.0.0
+kiwisolver         1.4.7
+matplotlib         3.9.2
+mypy-extensions    1.0.0
+numpy              1.26.4
+opencv-python      4.10.0.84
+packaging          24.1
+pathspec           0.12.1
+pillow             10.4.0
+platformdirs       4.3.6
+pluggy             1.5.0
+pyfiglet           1.0.2
+pyparsing          3.1.4
+pytest             8.3.3
+python-dateutil    2.9.0.post0
+requests           2.32.3
+scipy              1.14.1
+setuptools         75.1.0
+six                1.16.0
+tomli              2.0.2
+typing-extensions  4.12.2
+urllib3            2.2.3
 ### AR foundation real life scaling of floorplans
 
 <p align="left">
@@ -205,3 +237,53 @@ These are some known and relevant issues with the current implementation:
 [GNU GENERAL PUBLIC LICENSE](license) Version 3, 29 June 2007
 
 COPYRIGHT @ Grebtsew 2021
+
+
+## Как заставить это работать
+
+1. Создать uv проект - uv init
+2. Использовать python 3.10.0
+3. Установить следующие версии библиотек:
+black              24.10.0
+certifi            2024.8.30
+charset-normalizer 3.4.0
+click              8.1.7
+configparser       7.1.0
+contourpy          1.3.0
+cycler             0.12.1
+exceptiongroup     1.2.2
+fonttools          4.54.1
+future-fstrings    1.2.0
+idna               3.10
+iniconfig          2.0.0
+kiwisolver         1.4.7
+matplotlib         3.9.2
+mypy-extensions    1.0.0
+numpy              1.26.4
+opencv-python      4.10.0.84
+packaging          24.1
+pathspec           0.12.1
+pillow             10.4.0
+platformdirs       4.3.6
+pluggy             1.5.0
+pyfiglet           1.0.2
+pyparsing          3.1.4
+pytest             8.3.3
+python-dateutil    2.9.0.post0
+requests           2.32.3
+scipy              1.14.1
+setuptools         75.1.0
+six                1.16.0
+tomli              2.0.2
+typing-extensions  4.12.2
+urllib3            2.2.3
+
+
+4. Заменить в файле FloorplanToBlenderLib/calculate.py 25 строку:
+
+Было:
+if cv2.pointPolygonTest(contour, (x, y), False) == 1.0:
+
+Стало:
+if cv2.pointPolygonTest(contour, (float(x), float(y)), False) == 1.0:
+
